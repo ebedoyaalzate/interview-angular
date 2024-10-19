@@ -1,0 +1,28 @@
+<div>
+  <input
+    type="text"
+    placeholder="Search by title or description"
+    [(ngModel)]="searchTerm"
+    (input)="filterItems()"
+  />
+
+  <div>
+    <button (click)="changeSortField('title')">
+      Sort by Title ({{
+        sortDirection === "asc" && sortField === "title" ? "asc" : "desc"
+      }})
+    </button>
+    <button (click)="changeSortField('description')">
+      Sort by Description ({{
+        sortDirection === "asc" && sortField === "description" ? "asc" : "desc"
+      }})
+    </button>
+  </div>
+
+  <ul>
+    <li *ngFor="let item of filteredItems">
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.description }}</p>
+    </li>
+  </ul>
+</div>
